@@ -1,52 +1,48 @@
-import { ref } from 'vue';
-import { defineStore } from 'pinia';
-import { getShows } from '@/services/getShows';
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+import { getShows } from '@/services/getShows'
 
 export const useShowStore = defineStore('show', () => {
-// State
-  const listOfShows = ref([]);
-  const listOfGenres = {};
-// Getters
+  // State
+  const listOfShows = ref([])
+  const listOfGenres = {}
+  // Getters
 
+  // Actions
+  async function getAllShows() {
+    const tempArray = await getShows()
 
-// Actions
-async function getAllShows() {
-  const tempArray = await getShows()
+    // Sort shows by genre in list of genres
+    sortByGenre(listOfGenres, tempArray)
+    sortByRating(listOfGenres)
+    this.listOfShows = listOfGenres
+  }
 
-  tempArray.forEach(showObject => {
-    // for each genre api data check if it exist in listOfGenres
-    // create list of all genres
-    CreateGenreArray(showObject.genres)
-  });
-
-      // Sort shows by genre in list of genres
-      sortByGenre(listOfGenres, tempArray)
-      // return listOfGenres
-
-  this.listOfShows = listOfGenres;
-
-};
-
-function CreateGenreArray(genresArray) {
-  genresArray.forEach(genre => {
-    if(!(genre in listOfGenres)) {
-      // create new genre key in listOfGenres
-      listOfGenres[genre] = []
-    }
-  });
-}
-
-function sortByGenre(genresList, showList) {
-  showList.forEach(show => {
-    show.genres.forEach(genre => {
-      if(genre in genresList) {
+  function sortByGenre(genresList, showsData) {
+    // Check genre of each show
+    showsData.forEach((show) => {
+      show.genres.forEach((genre) => {
+        // create genre object if not in listOfGenre
+        if (!(genre in listOfGenres)) {
+          listOfGenres[genre] = []
+        }
         genresList[genre].push(show)
-      }
-
+      })
     })
-  });
+  }
 
-}
+  function sortByRating(showsData) {
+    // Sort each genre array based on rating
+    Object.values(showsData).forEach((genre) => {
+      genre.sort((a, b) => b.rating.average - a.rating.average)
+    })
+  }
 
-return {listOfShows, getAllShows}
+  return {
+    listOfShows,
+    listOfGenres,
+    getAllShows,
+    sortByGenre,
+    sortByRating,
+  }
 })
