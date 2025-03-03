@@ -6,10 +6,10 @@ export async function getShows() {
       throw new Error(`Error occured: ${response.status}`);
     }
     const json = await response.json();
-    
+
     return json;
   } catch(error) {
-    // TODO implement error showing (if there is time)
+    // TODO implement error handling
     console.log(error.message);
   }
 }

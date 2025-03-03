@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { getShows } from '@/services/getShows'
 
@@ -7,6 +7,7 @@ export const useShowStore = defineStore('show', () => {
   const listOfShows = ref([])
   const listOfGenres = {}
   // Getters
+  const genreTitle = computed(() => Object.keys(listOfShows.value))
 
   // Actions
   async function getAllShows() {
@@ -40,6 +41,7 @@ export const useShowStore = defineStore('show', () => {
 
   return {
     listOfShows,
+    genreTitle,
     listOfGenres,
     getAllShows,
     sortByGenre,

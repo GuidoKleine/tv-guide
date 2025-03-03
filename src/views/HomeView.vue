@@ -1,6 +1,5 @@
 <template>
   <main>
-    <h1>Shows sorted by Genre</h1>
     <listOfShows />
   </main>
 </template>
