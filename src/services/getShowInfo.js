@@ -1,5 +1,5 @@
-export async function getShows() {
-  const url = "https://api.tvmaze.com/shows";
+export async function getShowInfo(showId) {
+  const url = `https://api.tvmaze.com/shows/${showId}`;
   try {
     const response = await fetch(url);
     if(!response.ok) {

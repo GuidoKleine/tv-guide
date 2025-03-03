@@ -1,5 +1,5 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useShowStore } from '@/stores/show';
+import { useShowStore } from '@/stores/shows'
 import { beforeEach, describe, it, expect } from 'vitest'
 
 describe('Show store', () => {
@@ -8,10 +8,13 @@ describe('Show store', () => {
   })
 
   it('Should create new genre array and sort shows by genre', () => {
-    const showStore = useShowStore();
+    const showStore = useShowStore()
 
-    const apiData = [{'title': ' show1', 'genres':['Drama', 'Action']}, {'title': 'show2', 'genres': ['Drama', 'Comedy']}]
-    showStore.listOfGenres = {'Drama': [], 'Comedy': [], 'Action': []}
+    const apiData = [
+      { title: ' show1', genres: ['Drama', 'Action'] },
+      { title: 'show2', genres: ['Drama', 'Comedy'] },
+    ]
+    showStore.listOfGenres = { Drama: [], Comedy: [], Action: [] }
 
     showStore.sortByGenre(showStore.listOfGenres, apiData)
 
@@ -21,24 +24,25 @@ describe('Show store', () => {
   })
 
   it('Should sort each genre array by rating', () => {
-    const showStore = useShowStore();
+    const showStore = useShowStore()
 
     const testData = {
-      'Comedy': [
-        {'id': 4, 'rating': {'average': 6.8}},
-        {'id': 61, 'rating': {'average': 7.9}},
-        {'id': 99, 'rating': {'average': 8.1}},
-      ]
-    };
+      Comedy: [
+        { id: 4, rating: { average: 6.8 } },
+        { id: 61, rating: { average: 7.9 } },
+        { id: 99, rating: { average: 8.1 } },
+      ],
+    }
 
     const expectedResult = {
-      'Comedy': [
-        {'id': 99, 'rating': {'average': 8.1}},
-        {'id': 61, 'rating': {'average': 7.9}},
-        {'id': 4, 'rating': {'average': 6.8}},
-      ]}
+      Comedy: [
+        { id: 99, rating: { average: 8.1 } },
+        { id: 61, rating: { average: 7.9 } },
+        { id: 4, rating: { average: 6.8 } },
+      ],
+    }
 
     showStore.sortByRating(testData)
-    expect(testData).toEqual(expectedResult);
+    expect(testData).toEqual(expectedResult)
   })
 })

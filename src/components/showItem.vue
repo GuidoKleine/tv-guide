@@ -21,7 +21,7 @@
 
 .item-container:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
 .text-container {

@@ -10,7 +10,7 @@ export const useShowStore = defineStore('show', () => {
   const genreTitle = computed(() => Object.keys(listOfShows.value))
 
   // Actions
-  async function getAllShows() {
+  async function setAllShows() {
     const tempArray = await getShows()
 
     // Sort shows by genre in list of genres
@@ -43,7 +43,7 @@ export const useShowStore = defineStore('show', () => {
     listOfShows,
     genreTitle,
     listOfGenres,
-    getAllShows,
+    setAllShows,
     sortByGenre,
     sortByRating,
   }

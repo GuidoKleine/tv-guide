@@ -1,9 +1,9 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import { useShowStore } from './stores/show';
+import { useShowStore } from './stores/shows';
 const showStore = useShowStore();
 
-showStore.getAllShows();
+showStore.setAllShows();
 
 </script>
 
@@ -11,6 +11,4 @@ showStore.getAllShows();
   <RouterView />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
