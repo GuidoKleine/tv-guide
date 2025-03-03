@@ -1,12 +1,10 @@
 <template>
   <div v-for="(genre, id) in showStore.listOfShows" :key="id">
-    <div>
-      <h3>
+      <h3 id="genre-title">
         {{ id }}
       </h3>
-    </div>
     <div class="list-container">
-      <ul class="list-carrousal">
+      <ul id="genre-list" class="list-carrousal">
         <showItem @click="goToTvShowPage(value.id)" class="show-item" v-for="(value, id) in genre" :key="id"
           :style="`background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${value.image.medium});`">
           <template #show-title>
