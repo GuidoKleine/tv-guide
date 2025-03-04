@@ -3,8 +3,8 @@
       <h3 id="genre-title">
         {{ id }}
       </h3>
+      <div class="wrapper">
       <div class="list-container">
-      <button class="list-button"> < </button>
       <ul id="genre-list" class="list-carrousal">
         <showItem @click="goToTvShowPage(genre[id], value.name)" class="show-item" v-for="(value, id) in genre" :key="id"
           :style="`background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${value.image.medium});`">
@@ -13,8 +13,8 @@
           </template>
         </showItem>
       </ul>
-      <button class="list-button"> > </button>
     </div>
+  </div>
   </div>
 </template>
 
@@ -32,19 +32,19 @@ function goToTvShowPage(tvShow, tvShowName) {
   tvShowStore.setTvShowInfo(tvShow);
   router.push({ path: `tvshow/${tvShowName}`, })
 }
-
 </script>
 
 <style>
-.list-button {
-  z-index: 1;
+.wrapper {
+  display: flex;
+  flex-direction: row;
 }
-
 .list-container {
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
   height: 150px;
+  /* scrollbar-width: none; */
 }
 
 .list-carrousal {
@@ -52,7 +52,6 @@ function goToTvShowPage(tvShow, tvShowName) {
   display: flex;
   margin: 0px;
   padding: 0px;
-  z-index: 0;
 }
 
 .show-item {
