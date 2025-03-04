@@ -1,14 +1,12 @@
 # tv-guide
 
-This template should help get you started developing with Vue 3 in Vite.
+This tv guide uses the tv maze api to get back a list of shows. The shows are sorted in genre and rating (with highest rating at the top), in horizontal list. When selecting a show, the user is shown a simple details page about that tv show.
 
-## Recommended IDE Setup
+## npm version used in development
+11.1.0
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+## node version used in development
+23.8.0
 
 ## Project Setup
 
@@ -22,20 +20,15 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
 npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Architectural setup
 
-```sh
-npm run lint
-```
+- This project uses vue 3 with the composition api and het setup() hook.
+- Localhost is served using vite in its standard setup.
+- Unit testing is done using vitest.
+
