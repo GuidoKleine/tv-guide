@@ -4,19 +4,21 @@ import { getShows } from '@/services/getShows'
 
 export const useShowStore = defineStore('show', () => {
   // State
-  const listOfShows = ref([])
-  const listOfGenres = {}
+  const listOfShows = ref([]);
+  const tvShowInfo = ref({});
+  const listOfGenres = {};
+
   // Getters
-  const genreTitle = computed(() => Object.keys(listOfShows.value))
+  const genreTitle = computed(() => Object.keys(listOfShows.value));
 
   // Actions
   async function setAllShows() {
-    const tempArray = await getShows()
+    const tempArray = await getShows();
 
     // Sort shows by genre in list of genres
-    sortByGenre(listOfGenres, tempArray)
-    sortByRating(listOfGenres)
-    this.listOfShows = listOfGenres
+    sortByGenre(listOfGenres, tempArray);
+    sortByRating(listOfGenres);
+    this.listOfShows = listOfGenres;
   }
 
   function sortByGenre(genresList, showsData) {
@@ -41,6 +43,7 @@ export const useShowStore = defineStore('show', () => {
 
   return {
     listOfShows,
+    tvShowInfo,
     genreTitle,
     listOfGenres,
     setAllShows,
