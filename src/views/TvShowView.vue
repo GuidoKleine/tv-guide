@@ -1,7 +1,7 @@
 <template>
   <button aria-label='back' class="back-button" @click="goToHomePage()">back</button>
   <div class="show-container">
-    <img :src='tvShowStore.tvShowInfo.image.medium' />
+    <img :src='tvShowStore.tvShowInfo.image.medium' :alt="`poster image of tv show - ${tvShowStore.tvShowInfo.name}`" />
     <div class="title-container">
       <div class="short-info-wrapper">
         <h1> {{ tvShowStore.tvShowInfo.name }}</h1>

@@ -1,27 +1,28 @@
 <template>
   <div v-for="(genre, id) in showStore.listOfShows" :key="id">
-      <h3 id="genre-title">
-        {{ id }}
-      </h3>
-      <div class="wrapper">
+    <h3 id="genre-title">
+      {{ id }}
+    </h3>
+    <div class="wrapper">
       <div class="list-container">
-      <ul id="genre-list" class="list-carrousal">
-        <showItem @click="goToTvShowPage(genre[id], value.name)" class="show-item" v-for="(value, id) in genre" :key="id"
-          :style="`background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${value.image.medium});`">
-          <template #show-title>
-            <h4>{{ value.name }}</h4>
-          </template>
-        </showItem>
-      </ul>
+        <ul id="genre-list" class="list-carrousal">
+          <showItem @click="goToTvShowPage(genre[id], value.name)" class="show-item" v-for="(value, id) in genre"
+            :key="id"
+            :style="`background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${value.image.medium});`">
+            <template #show-title>
+              <h4>{{ value.name }}</h4>
+            </template>
+          </showItem>
+        </ul>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router'
 import { useShowStore } from '@/stores/shows';
-import { useShowInfoStore} from '@/stores/showInfo';
+import { useShowInfoStore } from '@/stores/showInfo';
 import showItem from './showItem.vue';
 
 const router = useRouter()
@@ -39,6 +40,7 @@ function goToTvShowPage(tvShow, tvShowName) {
   display: flex;
   flex-direction: row;
 }
+
 .list-container {
   display: flex;
   flex-wrap: nowrap;

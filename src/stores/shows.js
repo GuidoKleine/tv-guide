@@ -17,9 +17,10 @@ export const useShowStore = defineStore('show', () => {
 
     // Sort shows by genre in list of genres
     sortByGenre(listOfGenres, tempArray);
+    // Sort the shows by rating
     sortByRating(listOfGenres);
     this.listOfShows = listOfGenres;
-  }
+  };
 
   function sortByGenre(genresList, showsData) {
     // Check genre of each show
@@ -32,14 +33,14 @@ export const useShowStore = defineStore('show', () => {
         genresList[genre].push(show)
       })
     })
-  }
+  };
 
   function sortByRating(showsData) {
     // Sort each genre array based on rating
     Object.values(showsData).forEach((genre) => {
       genre.sort((a, b) => b.rating.average - a.rating.average)
     })
-  }
+  };
 
   return {
     listOfShows,

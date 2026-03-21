@@ -1,9 +1,9 @@
 <template>
-    <li class="item-container darken">
-      <div class="text-container">
-        <slot name="show-title"></slot>
-      </div>
-    </li>
+  <li class="item-container darken">
+    <div class="text-container">
+      <slot name="show-title"></slot>
+    </div>
+  </li>
 </template>
 
 <script setup>
